@@ -26,11 +26,11 @@ def Initial_UMAP_Distribution(data_file, save_path, data_ind_list):
             reducer.fit(data)
             embedding = reducer.transform(data)
 
-            if not os.path.exists(save_path + '/{}_New'.format(data_ind_list)):
-                os.makedirs(save_path + '/{}_New'.format(data_ind_list))
+            if not os.path.exists(save_path + '{}_New'.format(data_ind_list)):
+                os.makedirs(save_path + '{}_New'.format(data_ind_list))
                 print("The new directory is created!")
 
-            savepath = save_path + '/{}_New/'.format(data_ind_list)
+            savepath = save_path + '{}_New/'.format(data_ind_list)
             filename = savepath + '3_component_umap_n_neighbors' + str(list_of_n_neighbors) + '_min_dist_' + str(
                 list_of_min_dist) + '.npy'
             np.save(filename, embedding)
@@ -46,11 +46,14 @@ def Initial_Clustering(Data_file, initial_savepath, save_path, list_of_n_neighbo
 
     # Use the DBSCAN and Silhouette score to get the initial number of clusters
     choosing_cluster = []
-    eps_list = np.arange(2, 6)
+    eps_list = np.arange(2, max_cluster_num)
 
-    for eps_tmp in range(2, 6):
+    for eps_tmp in range(2, max_cluster_num):
         clustering = DBSCAN(eps=eps_tmp, min_samples=5).fit(tempdata)
-        choosing_cluster.append(silhouette_score(tempdata, clustering.labels_))
+        if max(clustering.labels_) == 0:
+            choosing_cluster.append(0)
+        else:
+            choosing_cluster.append(silhouette_score(tempdata, clustering.labels_))
 
     eps_list_check = eps_list[np.where(choosing_cluster == max(choosing_cluster))]
     clustering_fin = DBSCAN(eps=eps_list_check[0], min_samples=5).fit(tempdata)
@@ -94,10 +97,10 @@ def generated_umap(Data_file, Save_Path, labels, selected_cluster, data_ind_list
             embedding = reducer.transform(data)
 
             if not os.path.exists(Save_Path + '{}_New/Layer_1'.format(data_ind_list)):
-                os.makedirs(Save_Path + '/{}_New/Layer_1'.format(data_ind_list))
+                os.makedirs(Save_Path + '{}_New/Layer_1'.format(data_ind_list))
                 print("The new directory is created!")
 
-            savepath = Save_Path + '/{}_New/Layer_1/'.format(data_ind_list)
+            savepath = Save_Path + '{}_New/Layer_1/'.format(data_ind_list)
             filename = savepath + '3_component_umap_n_neighbors' + str(list_of_n_neighbors_tmp) + '_min_dist_' + str(
                 list_of_min_dist_tmp) + '.npy'
             np.save(filename, embedding)
@@ -120,7 +123,7 @@ def subclustering_fun(save_path, initial_save_path, initial_label, Num_cluster_n
 
         for list_of_n_neighbors_tmp in [10, 20]:
 
-            savepath_1 = save_path + '/{}_New/Layer_1/'.format(data_ind_list)
+            savepath_1 = save_path + '{}_New/Layer_1/'.format(data_ind_list)
             filename = savepath_1 + '3_component_umap_n_neighbors' + str(list_of_n_neighbors_tmp) + '_min_dist_' + str(list_of_min_dist) + '.npy'
             sub_tempdata = np.load(filename)
 
@@ -135,8 +138,8 @@ def subclustering_fun(save_path, initial_save_path, initial_label, Num_cluster_n
 
         index, = np.where(shi_score == max(shi_score))
 
-        current_labels = minimal_cluster_list[np.squeeze(index), :]
-        selected_parameters = parameter_list[np.squeeze(index)]
+        current_labels = minimal_cluster_list[np.squeeze(index[0]), :]
+        selected_parameters = parameter_list[np.squeeze(index[0])]
         filename_c3 = initial_save_path + '5_subclustering_label_' + data_ind_list + '.npy'  # Save the subcluster label
         filename_c4 = initial_save_path + '5_subclustering_label_Extra_' + data_ind_list + '.npy'  # Save the parameters we got
         np.save(filename_c3, current_labels)
@@ -289,7 +292,7 @@ def save_to_file(save_path, time_list, data):
     workbook.close()
 
 def autocorrelation_function(x):
-    correlation = correlate(x, x, mode='same', method='fft')
+    correlation = correlate(x, x, mode='full', method='fft')
     autocorr = correlation[len(x) - 1:] / np.max(correlation)
 
     return autocorr

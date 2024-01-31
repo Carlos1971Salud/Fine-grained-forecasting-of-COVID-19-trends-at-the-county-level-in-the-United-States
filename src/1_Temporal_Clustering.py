@@ -15,8 +15,8 @@ time_list = ['041520','043020','051520','053120','061520','063020','071520','073
              '101521','103121','111521','113021','121521','123121','011522','013122','021522','022822','031522','033122']
 
 path = 'Data/COVID-19_Dataset_Counties_US.xlsx'
-save_path_data_collection = 'Data/Feautre_Collection'
-Save_Path_Clusters = 'Results/Clustering Label'
+save_path_data_collection = 'Data/Feautre_Collection/'
+Save_Path_Clusters = 'Results/Clustering Label/'
 
 # Parameters for UMAP (Fit the distribution)
 list_of_n_neighbors = 20
@@ -37,8 +37,8 @@ if __name__ == '__main__':
     # Temporal Clusteting ==============================================================================================
 
     for i in tqdm(range(len(time_list))):
-        Ori_Data_file = save_path_data_collection + '/note_{}_01_C_NewData.mat'.format(time_list[i])
-        Data_file = save_path_data_collection + '/note_{}_02_C_New_features.mat'.format(time_list[i])
+        Ori_Data_file = save_path_data_collection + 'note_{}_01_C_NewData.mat'.format(time_list[i])
+        Data_file = save_path_data_collection + 'note_{}_02_C_New_features.mat'.format(time_list[i])
 
         Initial_save_path = Initial_UMAP_Distribution(Data_file, Save_Path_Clusters, time_list[i])
 

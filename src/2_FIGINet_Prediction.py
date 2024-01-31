@@ -29,7 +29,7 @@ sheet_name = 'Cases'                                                 # Data shee
 cluster_sheet_name = 'Clusters'                                      # Cluster sheet name
 Premodel_save_path = 'Model/Pretrained_Model/'                       # Save uni-model path
 Grained_Model_save_path = 'Model/FIGI_Model/'                        # Save FIGI-Net model path
-save_path = 'Results/Prediction_Results'                             # Save prediction outcomes from FIGI-Net model for each time interval
+save_path = 'Results/Prediction_Results/'                            # Save prediction outcomes from FIGI-Net model for each time interval
 Final_save_path = 'Results/Final_Result/'                            # Save the whole time prediction result
 
 Training_length = 75                                                 # Training data length
