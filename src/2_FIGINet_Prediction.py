@@ -22,7 +22,7 @@ from lib.Model_Training import *
 # Parameter Setting ====================================================================================================
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'                             # GPU Setting
 
-Use_Pretrained = True                                                # True: use pretrained models / False: train uni-model and FIGI-Net model
+Use_Pretrained = False                                               # True: use pretrained models / False: train uni-model and FIGI-Net model
 
 path = 'Data/COVID-19_Dataset_Counties_US.xlsx'             # Public Data directory
 sheet_name = 'Cases'                                                 # Data sheet name
