@@ -21,7 +21,7 @@ pip install -r requirements.txt
 * Prepare the dataset as Excel file and copy to the ``Data`` folder. 
 * Follow the order of codes (in the ``src`` folder)
   * Run ``1_Temporal_Clustering.py`` to obtain the cluster labels of US counties.
-    * 
+    * The Clustering labels will be saved to a new custom sheet in the original Excel file. 
   * Then run ``2_FIGINet_Prediction.py`` for model training and result forecasting.
     * If the user uses pretrained models , please set the parameter ``Use_Pretrained`` as True. 
 * The forecasting results will be generated in ``Results`` folder 
