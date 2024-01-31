@@ -61,6 +61,6 @@ if __name__ == '__main__':
 
         time.sleep(0.001)
 
-# Save all clustering results into orignial xlsx file
-save_to_file(path, time_list, All_Cluster_label)
+    # Save all clustering results into orignial xlsx file
+    save_to_file(path, time_list, All_Cluster_label)
 
