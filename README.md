@@ -15,13 +15,15 @@ pip install -r requirements.txt
 ## Usage
 * Clone the repo to your project folder by using the following commend:
 
-    ``git clone https://github.com/kleelab-bch/FIGInet``
+    ``git clone https://github.com/kleelab-bch/FIGI-Net``
 
 
 * Prepare the dataset as Excel file and copy to the ``Data`` folder. 
 * Follow the order of codes (in the ``src`` folder)
-  * Run ``1_Temporal_Clustering.py`` to obtain the cluster labels of US counties; 
-  * Then run ``2_FIGINet_Prediction.py`` for model training and result forecasting. 
+  * Run ``1_Temporal_Clustering.py`` to obtain the cluster labels of US counties.
+    * 
+  * Then run ``2_FIGINet_Prediction.py`` for model training and result forecasting.
+    * If the user uses pretrained models , please set the parameter ``Use_Pretrained`` as True. 
 * The forecasting results will be generated in ``Results`` folder 
 
 ## Note
