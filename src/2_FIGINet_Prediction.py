@@ -164,9 +164,15 @@ if __name__ == '__main__':
             df_Predict_Case[np.where(Label_idx[:] == (cluster + 1))] = Cluster_List
 
             if cluster == 0:
-                Prediction_list = np.mean(Cluster_List, axis=0)
+                if Cluster_List.ndim != 1:
+                    Prediction_list = np.mean(Cluster_List, axis=0)
+                else:
+                    Prediction_list = Cluster_List
             else:
-                Prediction_list = np.vstack((Prediction_list, np.mean(Cluster_List, axis=0)))
+                if Cluster_List.ndim != 1:
+                    Prediction_list = np.vstack((Prediction_list, np.mean(Cluster_List, axis=0)))
+                else:
+                    Prediction_list = np.vstack((Prediction_list, Cluster_List))
 
         savemat(save_path + 'Prediction_w_slidingday_{}.mat'.format(time_list[c_ind]), mdict={'Prediction_list': Prediction_list, 'df_New_cases_diff_denoised_copy': df_New_cases_diff_denoised_copy,
                                                                                               'df_Predict_Case': df_Predict_Case, 'Label_idx': Label_idx})
