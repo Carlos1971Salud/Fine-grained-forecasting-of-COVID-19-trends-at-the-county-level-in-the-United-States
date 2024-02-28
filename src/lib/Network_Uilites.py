@@ -315,6 +315,8 @@ def clean_prediction_data(length_day, assign_label, tmp_predicted_list):
             else:
                 tmp_predicted_list[:, idx] = (tmp_predicted_list[:, idx - 1] + tmp_predicted_list[:, idx + 1]) / 2
 
+    tmp_predicted_list[tmp_predicted_list < 0] = 0
+
     return tmp_predicted_list
 
 # main function for combining prediction results (for 15 day-length)
