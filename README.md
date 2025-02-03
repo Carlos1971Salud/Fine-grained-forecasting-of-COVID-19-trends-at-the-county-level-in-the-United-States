@@ -30,6 +30,7 @@ pip install -r requirements.txt
 - All the Covid-19 Confirmed Data of US Counties are from <a href="https://coronavirus.jhu.edu/">Center for Systems Science and Engineering (CSSE) at Johns Hopkins University</a>.
 - The ``lib`` folder includes all dependencies required for the FIGInet workflow.
 - All trained models are saved to the ``Model`` folder.
+- The raw error data, consisting of the RMSE and RRMSE values of evaluated models, have been added to the ``Data`` folder for comparison and analysis.
 
 ## Citation
 ```
