@@ -34,13 +34,16 @@ pip install -r requirements.txt
 
 ## Citation
 ```
-@article {Song2024.01.13.24301248,
-	author = {Tzu-Hsi Song and Leonardo Clemente and Xiang Pan and Junbong Jang and Mauricio Santillana and Kwonmoo Lee},
-	title = {Fine-Grained Forecasting of COVID-19 Trends at the County Level in the United States},
-	elocation-id = {2024.01.13.24301248},
-	year = {2024},
-	doi = {10.1101/2024.01.13.24301248},
-	journal = {medRxiv}
+@article{Song2025FIGINet,
+  author       = {Song, Tzu‑Hsi and Clemente, Leonardo and Pan, Xiang and Jang, Junbong and Santillana, Mauricio and Lee, Kwonmoo},
+  title        = {Fine‑grained forecasting of COVID‑19 trends at the county level in the United States},
+  journal      = {npj Digital Medicine},
+  volume       = {8},
+  number       = {1},
+  pages        = {204},
+  year         = {2025},
+  doi          = {10.1038/s41746-025-01606-1},
+  url          = {https://www.nature.com/articles/s41746-025-01606-1}
 }
 ```
 ## Contact
