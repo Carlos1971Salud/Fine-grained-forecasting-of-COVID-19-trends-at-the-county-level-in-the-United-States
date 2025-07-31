@@ -23,7 +23,8 @@ pip install -r requirements.txt
   * Run ``1_Temporal_Clustering.py`` to obtain the cluster labels of US counties.
     * The Clustering labels will be saved to a new custom sheet in the original Excel file. 
   * Then run ``2_FIGINet_Prediction.py`` for model training and result forecasting.
-    * If the user uses pretrained models , please set the parameter ``Use_Pretrained`` as True. 
+    * If the user would like to use uni-pretrained models to train FIGI-Net models , please set the parameters ``Use_Uni_Pretrained`` to ``True`` and ``Use_Grained_Pretrained`` to ``**False**``.
+    * If the user would like to train all models from scratch, please set the above parameters to ``False``.
 * The forecasting results will be generated in ``Results`` folder 
 
 ## Note
