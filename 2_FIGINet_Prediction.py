@@ -113,7 +113,10 @@ if __name__ == '__main__':
 
             else:
                 if not os.path.exists(Premodel_save_path):
-                    print('Please pretrain the Uni-Model or download the models!!!')
+                    print('Please train the Uni-Model or download the pretrained Uni-Model!!!')
+                    sys.exit()
+                elif not os.path.exists(Grained_Model_save_path):
+                    print('Please train the FIGI_Net Model !!!')
                     sys.exit()
                 model = load_model(Grained_Model_save_path + '{}_Model_Save/Prediction_Model_{}_in_Cluster_{}.h5'.format(time_list[c_ind], time_list[c_ind],cluster + 1))
 
