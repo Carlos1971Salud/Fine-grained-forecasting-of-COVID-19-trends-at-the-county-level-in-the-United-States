@@ -89,7 +89,7 @@ if __name__ == '__main__':
         df_New_cases_diff_denoised_train = df_New_cases_diff_denoised[:, Period_time_step_start:Period_time_step_end]
 
         df_Predict_Case = np.zeros((df_New_cases_diff_denoised_train.shape[0], predicted_day_fin))
-        Prediction_list = []
+        Mean_Cluster_Prediction_list = []
 
         if not os.path.exists(save_path):
             os.makedirs(save_path)
@@ -173,16 +173,16 @@ if __name__ == '__main__':
 
             if cluster == 0:
                 if Cluster_List.ndim != 1:
-                    Prediction_list = np.mean(Cluster_List, axis=0)
+                    Mean_Cluster_Prediction_list = np.mean(Cluster_List, axis=0)
                 else:
-                    Prediction_list = Cluster_List
+                    Mean_Cluster_Prediction_list = Cluster_List
             else:
                 if Cluster_List.ndim != 1:
-                    Prediction_list = np.vstack((Prediction_list, np.mean(Cluster_List, axis=0)))
+                    Mean_Cluster_Prediction_list = np.vstack((Mean_Cluster_Prediction_list, np.mean(Cluster_List, axis=0)))
                 else:
-                    Prediction_list = np.vstack((Prediction_list, Cluster_List))
+                    Mean_Cluster_Prediction_list = np.vstack((Mean_Cluster_Prediction_list, Cluster_List))
 
-        savemat(save_path + 'Prediction_w_slidingday_{}.mat'.format(time_list[c_ind]), mdict={'Prediction_list': Prediction_list, 'df_New_cases_diff_denoised_copy': df_New_cases_diff_denoised_copy,
+        savemat(save_path + 'Prediction_w_slidingday_{}.mat'.format(time_list[c_ind]), mdict={'Mean_Cluster_Prediction_list': Mean_Cluster_Prediction_list, 'df_New_cases_diff_denoised_copy': df_New_cases_diff_denoised_copy,
                                                                                               'df_Predict_Case': df_Predict_Case, 'Label_idx': Label_idx})
 
         sleep(0.001)
